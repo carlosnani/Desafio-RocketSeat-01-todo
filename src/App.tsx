@@ -1,11 +1,14 @@
+import { FormNewTask } from './components/FormNewTask';
+import { Header } from './components/Header';
 import './global.css';  
 
 function App() {
   
   return (
-    <div>
-       <h1>Oi</h1>
-    </div>
+    <>
+    <Header />
+    <FormNewTask />
+    </>
   )
 }
 

@@ -1,7 +1,12 @@
+ import LogoToDo from '../../assets/logo.svg';
+
+
+import styles from './header.module.css'
+
 export function Header() {
   return (
-    <header>
-      
+    <header className={styles.header}>
+      <img src={LogoToDo} />       
     </header>
   )
 }
