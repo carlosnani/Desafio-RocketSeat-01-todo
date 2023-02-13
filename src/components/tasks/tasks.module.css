@@ -1,0 +1,34 @@
+.tasks {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 44rem; 
+}
+.tasks header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.tasks header div {
+  display: flex;  
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem; 
+}
+.tasks header span {     
+  background: var(--gray-400);
+  font-size: 0.75rem; 
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.8rem;
+}
+.tasks header div:first-child p{
+  color: var(--blue);
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+.tasks header div:Last-child p{
+  color: var(--purple);
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
