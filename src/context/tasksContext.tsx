@@ -8,6 +8,8 @@ export interface TaskProps {
 
 type ArrayTaskProps = {
   tasks: TaskProps[];
+  addNewTask: (bodyText: string) => void;
+  deleteTask: () => void;  
 }
 
 interface TaskProviderProps {
@@ -15,29 +17,39 @@ interface TaskProviderProps {
 }
 
 export const TasksContext = createContext<ArrayTaskProps>(
-  { tasks: [] }
+  { 
+    tasks: [],
+    addNewTask: () => {},
+    deleteTask: () => {}  
+   }
 );
 
 
 export function TaskProvider({children}: TaskProviderProps){
 
-  const [tasks, setTasks] = useState<TaskProps[]>([
-    {
-      id: '001',
-      isCompleted: false, 
-      bodyText: 'Aqui vai um texto',
-    },
-    {
-      id: '003',
-      isCompleted: false, 
-      bodyText: 'Aqui vai um texto',
-    }
-  ]);
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
 
+
+  function addNewTask(bodyText: string){
+    setTasks([
+      ...tasks, 
+      {
+        id: crypto.randomUUID(),
+        isCompleted: false, 
+        bodyText: bodyText,
+      }
+    ]);
+  }
+
+  function deleteTask(){
+    console.log("deleteTask");
+  }
 
   return (
     <TasksContext.Provider value={{
-       tasks, 
+       tasks,
+       addNewTask,
+       deleteTask
     }}>
     {children}  
     </TasksContext.Provider>
