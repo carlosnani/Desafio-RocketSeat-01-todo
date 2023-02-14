@@ -6,7 +6,7 @@ import styles from './tasks.module.css';
 export function Tasks() {
 
   const { tasks } = useContext(TasksContext);
-  console.log()
+  const completedTasks = tasks.filter(task => task.isCompleted).length;
    
   return (
     <>
@@ -18,7 +18,7 @@ export function Tasks() {
           </div>
           <div>
             <p>Concluídas</p>
-            <span>1 de {tasks.length}</span>
+            <span>{completedTasks} de {tasks.length}</span>
           </div>
         </header>
         {tasks.map(task =>
