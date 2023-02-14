@@ -1,14 +1,19 @@
 import style from './task.module.css';
 import { RiDeleteBin5Line } from "react-icons/ri"
+import { TaskProps } from '../../context/tasksContext';
 
-export function Task(){
+interface propsTask {
+  task: TaskProps
+}
+
+export function Task({task} : propsTask ){
   return (
     <div className={style.task}>
       <button>
         <div></div>
       </button>
       <p>
-      Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
+      {task.bodyText}
       </p> 
       <button>
         <RiDeleteBin5Line size={18}/>
