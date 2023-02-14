@@ -12,7 +12,7 @@ export function FormNewTask() {
 
   function handleSubmit(event: FormEvent){
     event.preventDefault();
-    addNewTask(newTask);
+    newTask === '' ? newTask : addNewTask(newTask);     
     setNewTask('');
   }
 
