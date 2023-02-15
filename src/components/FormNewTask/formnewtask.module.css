@@ -39,4 +39,9 @@
   gap: 0.5rem;
   font-weight: 700;
   font-size: 0.875rem;
+  transition: background 0.5s ease;
+}
+
+.newTaskForm form button:hover {
+  background: var(--blue);  
 }
