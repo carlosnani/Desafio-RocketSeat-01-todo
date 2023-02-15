@@ -1,6 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import style from './task.module.css';
-import { RiDeleteBin5Line } from "react-icons/ri"
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 import { TaskProps, TasksContext } from '../../context/tasksContext';
 
 interface propsTask {
@@ -9,16 +10,24 @@ interface propsTask {
 
 export function Task({task} : propsTask ){
 
-  const { deleteTaskById } = useContext(TasksContext);
+  const { deleteTaskById, isTaskCompleted } = useContext(TasksContext);
+ 
 
   function deleteTask(id : string){
     deleteTaskById(id);
   }
 
+   function isCompletedTask(id: string){
+    isTaskCompleted(id);
+  }
+
+
   return (
     <div className={style.task}>
-      <button>
-        <div></div>
+      <button onClick={()=>isCompletedTask(task.id)} className={style.isCompletedTask}>
+        
+         {task.isCompleted ? <BsFillCheckCircleFill/> : <div></div> }  
+
       </button>
       <p>
       {task.bodyText}

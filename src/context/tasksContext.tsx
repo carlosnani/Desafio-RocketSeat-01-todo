@@ -3,14 +3,15 @@ import { Task } from './../components/task/index';
  
 export interface TaskProps {
   id: string;
-  isCompleted: boolean; 
   bodyText: string;
+  isCompleted: boolean; 
 }
 
 type ArrayTaskProps = {
   tasks: TaskProps[];
   addNewTask: (bodyText: string) => void;
   deleteTaskById: (bodyText: string) => void;  
+  isTaskCompleted: (id: string) => void;
 }
 
 interface TaskProviderProps {
@@ -21,7 +22,8 @@ export const TasksContext = createContext<ArrayTaskProps>(
   { 
     tasks: [],
     addNewTask: () => {},
-    deleteTaskById: () => {}  
+    deleteTaskById: () => {},
+    isTaskCompleted:() => {}  
    }
 );
 
@@ -29,7 +31,6 @@ export const TasksContext = createContext<ArrayTaskProps>(
 export function TaskProvider({children}: TaskProviderProps){
 
   const [tasks, setTasks] = useState<TaskProps[]>([]);
-
 
   function addNewTask(bodyText: string){
     setTasks([
@@ -42,16 +43,31 @@ export function TaskProvider({children}: TaskProviderProps){
     ]);
   }
 
-  function deleteTaskById(TaskId: string){
-    const newTasks = tasks.filter(task => task.id !== TaskId); 
+  function deleteTaskById(taskId: string){
+    const newTasks = tasks.filter(task => task.id !== taskId); 
     setTasks(newTasks);
   }
+
+  function isTaskCompleted(taskId: string) {
+    const newTasks = tasks.map(task => {
+      if(task.id === taskId){
+        return {
+          ...task, 
+          isCompleted: !task.isCompleted
+        }
+      }
+      return task
+    }); 
+    setTasks(newTasks); 
+  } 
 
   return (
     <TasksContext.Provider value={{
        tasks,
        addNewTask,
-       deleteTaskById
+       deleteTaskById,
+       isTaskCompleted  
+
     }}>
     {children}  
     </TasksContext.Provider>
