@@ -43,3 +43,8 @@ button.isCompletedTask svg{
 .task button svg {
   color: var(--gray-300);
 }
+
+.textIsCompeted {
+  color: var(--gray-300) !important;
+  text-decoration: line-through; 
+}

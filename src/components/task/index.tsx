@@ -29,7 +29,7 @@ export function Task({task} : propsTask ){
          {task.isCompleted ? <BsFillCheckCircleFill/> : <div></div> }  
 
       </button>
-      <p>
+      <p className={task.isCompleted ? style.textIsCompeteded : ''}>
       {task.bodyText}
       </p> 
       <button onClick={()=>{deleteTask(task.id)}}>
