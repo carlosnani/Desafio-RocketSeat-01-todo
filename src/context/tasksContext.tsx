@@ -1,5 +1,5 @@
 import { createContext, useState, ReactNode } from "react";
-import { Task } from './../components/task/index';
+ 
  
 export interface TaskProps {
   id: string;
