@@ -2,6 +2,9 @@
 ## Praticando os conceitos do ReactJS da RocketSeat: <br>
 Essa é uma aplicação de To-Do (lista de tarefas) desenvolvida utilizando React e TypeScript.
 Para controle de estados foi utilizado useContext.
+
+Veja o app online:
+https://todoappreact-rocketseat.netlify.app/
  
 ### Funcionalidades:
 A aplicação utiliza os hooks useState e useContext para gerenciar o estado da lista de tarefas <br>
